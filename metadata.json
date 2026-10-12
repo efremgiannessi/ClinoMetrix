@@ -1,0 +1,6 @@
+{
+  "name": "ClinoMetrix - Calcolatore Pendenza e Dislivello",
+  "description": "Calcolatore professionale bidirezionale per pendenza, dislivello, gradi e distanza con simulatore geometrico, profili altimetrici e standard tecnici.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
