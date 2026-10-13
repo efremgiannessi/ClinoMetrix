@@ -122,6 +122,78 @@ export const FormulasCheatsheet: React.FC = () => {
           </table>
         </div>
       </div>
+
+      {/* NTC 2018 Structural Formulas Section */}
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4">
+        <h3 className="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
+          <BookOpen className="w-4 h-4 text-cyan-400" />
+          Formule di Calcolo Strutturale NTC Vigenti (D.M. 17/01/2018)
+        </h3>
+        <p className="text-xs text-slate-300 leading-relaxed">
+          Le Norme Tecniche per le Costruzioni definiscono le combinazioni di carico agli Stati Limite Ultimi (SLU) e di Esercizio (SLE) per le solette carrabili e le azioni orizzontali di frenatura e urto veicolare:
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+          <div className="bg-slate-950 p-3.5 rounded-lg border border-slate-800 space-y-1">
+            <span className="text-[10px] text-slate-400 block uppercase">Combinazione Fondamentale SLU:</span>
+            <div className="text-white font-bold">q_Ed = 1.30&middot;g₁ + 1.50&middot;g₂ + 1.50&middot;q_k</div>
+            <p className="text-[10px] font-sans text-slate-400 mt-1">
+              g₁ = peso proprio soletta in c.a. (s &times; 25 kN/m³), g₂ = carichi permanenti portati (finitura, pendenze, canalette).
+            </p>
+          </div>
+
+          <div className="bg-slate-950 p-3.5 rounded-lg border border-slate-800 space-y-1">
+            <span className="text-[10px] text-slate-400 block uppercase">Forza Orizzontale Frenatura Hk:</span>
+            <div className="text-rose-400 font-bold">H_k = 0.20 &times; Q_k</div>
+            <p className="text-[10px] font-sans text-slate-400 mt-1">
+              Azione longitudinale trasmessa dalla frenata o accelerazione sulla rampa al piano di rotolamento (NTC Par. 3.1.4.2).
+            </p>
+          </div>
+
+          <div className="bg-slate-950 p-3.5 rounded-lg border border-slate-800 space-y-1">
+            <span className="text-[10px] text-slate-400 block uppercase">Verifica Snellezza Soletta SLE:</span>
+            <div className="text-emerald-400 font-bold">&lambda; = L / s &le; 22 &divide; 25</div>
+            <p className="text-[10px] font-sans text-slate-400 mt-1">
+              Rapporto luce/spessore per evitare calcoli complessi delle frecce differite e garantire rigidezza dinamica (NTC Par. 4.1.2.2.2).
+            </p>
+          </div>
+        </div>
+
+        {/* NTC 2018 Snow Drift Formulations */}
+        <div className="pt-2 border-t border-slate-800">
+          <span className="text-[11px] font-bold text-white block uppercase tracking-wider mb-2 font-mono">
+            Azioni della Neve &amp; Accumuli nelle Coperture (NTC § 3.4 &amp; Circolare C3.4.3 / UNI EN 1991-1-3):
+          </span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+            <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 space-y-1">
+              <span className="text-[10px] text-cyan-400 block uppercase">Ridosso Parete Alta (Risega):</span>
+              <div className="text-white font-bold">&mu;₂ = &mu;_s + &mu;_w &le; 4.0</div>
+              <div className="text-cyan-300">l_s = 2&middot;h (5m &le; l_s &le; 15m)</div>
+              <p className="text-[10px] font-sans text-slate-400">
+                &mu;_w = (b₁ + b₂)/(2h) &le; &gamma;&middot;h/q_sk. Picco di carico triangolare addossato alla parete più alta.
+              </p>
+            </div>
+
+            <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 space-y-1">
+              <span className="text-[10px] text-cyan-400 block uppercase">Barriere Fermaneve su Falda:</span>
+              <div className="text-white font-bold">F_s = s &times; L_falda &times; sin(&alpha;)</div>
+              <div className="text-emerald-400 font-bold">&mu;₁ &ge; 0.80 (divieto &mu;₁=0)</div>
+              <p className="text-[10px] font-sans text-slate-400">
+                Spinta di scorrimento parallela alla falda per metro lineare trasmessa alle staffe di fissaggio.
+              </p>
+            </div>
+
+            <div className="bg-slate-950 p-3 rounded-lg border border-slate-800 space-y-1">
+              <span className="text-[10px] text-cyan-400 block uppercase">Neve a Sbalzo (Gronda / Cornicione):</span>
+              <div className="text-white font-bold">S_e = k &times; (s² / &gamma;)</div>
+              <div className="text-rose-400">k &approx; 0.17 · d = s / &gamma;</div>
+              <p className="text-[10px] font-sans text-slate-400">
+                Carico lineare concentrato sul bordo per effetto del becco di neve sospeso oltre il canale di gronda.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

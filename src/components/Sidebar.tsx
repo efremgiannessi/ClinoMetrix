@@ -13,10 +13,12 @@ import {
   SlidersHorizontal,
   Smartphone,
   Droplets,
+  Car,
+  Landmark,
 } from 'lucide-react';
 import { MeasurementSystem } from '../types/clino';
 
-export type NavTab = 'calculator' | 'route' | 'stairs' | 'hydraulics' | 'sensor' | 'standards' | 'formulas';
+export type NavTab = 'calculator' | 'ntc' | 'ramps' | 'stairs' | 'hydraulics' | 'sensor' | 'route' | 'standards' | 'formulas';
 
 interface SidebarProps {
   activeTab: NavTab;
@@ -67,11 +69,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
       icon: <Compass className="w-5 h-5 shrink-0" />,
     },
     {
-      id: 'route',
-      label: 'Profili Multi-Tratta',
-      shortLabel: 'Multi-Tratta',
-      description: 'Itinerari altimetrici a più segmenti',
-      icon: <Layers className="w-5 h-5 shrink-0" />,
+      id: 'ntc',
+      label: 'NTC 2018 - Capitolo 3',
+      shortLabel: 'NTC Azioni',
+      description: 'Carichi G/Q, Sismica, Vento, Accumulo Neve (8 Casi) e Termica',
+      icon: <Landmark className="w-5 h-5 shrink-0" />,
+      badge: 'D.M. 2018',
+    },
+    {
+      id: 'ramps',
+      label: 'Rampe Carraie & Garage',
+      shortLabel: 'Rampe Carraie',
+      description: 'Accesso autorimesse, max 20%/15%, D.M. 86 & NTC 2018',
+      icon: <Car className="w-5 h-5 shrink-0" />,
+      badge: 'NTC 2018',
     },
     {
       id: 'stairs',
@@ -86,7 +97,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
       shortLabel: 'Idraulica',
       description: 'Pendenze scarichi e velocità autopulente',
       icon: <Droplets className="w-5 h-5 shrink-0" />,
-      badge: 'Nuovo',
     },
     {
       id: 'sensor',
@@ -95,6 +105,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
       description: 'Giroscopio del telefono e livella 2D',
       icon: <Smartphone className="w-5 h-5 shrink-0" />,
       badge: 'Live',
+    },
+    {
+      id: 'route',
+      label: 'Profili Multi-Tratta',
+      shortLabel: 'Multi-Tratta',
+      description: 'Itinerari altimetrici a più segmenti',
+      icon: <Layers className="w-5 h-5 shrink-0" />,
     },
     {
       id: 'standards',
@@ -380,7 +397,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <span className="text-[10px] mt-0.5 tracking-tight leading-none">Calcolo</span>
         </button>
 
-        {/* Tab 2: Scale Blondel */}
+        {/* Tab 2: Rampe Carraie Garage */}
+        <button
+          onClick={() => setActiveTab('ramps')}
+          className={`flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-all min-w-[54px] min-h-[48px] cursor-pointer ${
+            activeTab === 'ramps'
+              ? 'text-cyan-400 font-bold'
+              : 'text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <Car className={`w-5 h-5 transition-transform ${activeTab === 'ramps' ? 'scale-110' : ''}`} />
+          <span className="text-[10px] mt-0.5 tracking-tight leading-none">Rampe</span>
+        </button>
+
+        {/* Tab 3: Scale Blondel */}
         <button
           onClick={() => setActiveTab('stairs')}
           className={`flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-all min-w-[54px] min-h-[48px] cursor-pointer ${
@@ -393,7 +423,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <span className="text-[10px] mt-0.5 tracking-tight leading-none">Scale</span>
         </button>
 
-        {/* Tab 3: Clinometro Live */}
+        {/* Tab 4: Clinometro Live */}
         <button
           onClick={() => setActiveTab('sensor')}
           className={`relative flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-all min-w-[54px] min-h-[48px] cursor-pointer ${
@@ -407,24 +437,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <span className="text-[10px] mt-0.5 tracking-tight leading-none">Sensori</span>
         </button>
 
-        {/* Tab 4: Idraulica */}
-        <button
-          onClick={() => setActiveTab('hydraulics')}
-          className={`flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-all min-w-[54px] min-h-[48px] cursor-pointer ${
-            activeTab === 'hydraulics'
-              ? 'text-cyan-400 font-bold'
-              : 'text-slate-400 hover:text-slate-200'
-          }`}
-        >
-          <Droplets className={`w-5 h-5 transition-transform ${activeTab === 'hydraulics' ? 'scale-110' : ''}`} />
-          <span className="text-[10px] mt-0.5 tracking-tight leading-none">Idraulica</span>
-        </button>
-
         {/* Tab 5: Tutti i moduli / Menu */}
         <button
           onClick={() => setIsMobileOpen(true)}
           className={`flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-all min-w-[54px] min-h-[48px] cursor-pointer ${
-            isMobileOpen || activeTab === 'route' || activeTab === 'standards' || activeTab === 'formulas'
+            isMobileOpen || activeTab === 'ntc' || activeTab === 'route' || activeTab === 'standards' || activeTab === 'formulas'
               ? 'text-cyan-300 font-bold'
               : 'text-slate-400 hover:text-slate-200'
           }`}

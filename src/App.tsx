@@ -6,12 +6,14 @@
 import React, { useState, useEffect } from 'react';
 import { Sidebar, NavTab } from './components/Sidebar';
 import { SlopeCalculator } from './components/SlopeCalculator';
+import { VehicularRampCalculator } from './components/VehicularRampCalculator';
 import { RouteProfileBuilder } from './components/RouteProfileBuilder';
 import { StairsCalculator } from './components/StairsCalculator';
 import { HydraulicsCalculator } from './components/HydraulicsCalculator';
 import { SensorClinometer } from './components/SensorClinometer';
 import { StandardsCatalog } from './components/StandardsCatalog';
 import { FormulasCheatsheet } from './components/FormulasCheatsheet';
+import { NtcActionsSection } from './components/NtcActionsSection';
 import { HistoryModal } from './components/HistoryModal';
 import { MeasurementSystem, SavedCalculation, TechnicalStandardPreset } from './types/clino';
 
@@ -141,7 +143,17 @@ export default function App() {
             />
           )}
 
-          {/* Tab 2: Multi-Segment Route Profile Builder */}
+          {/* Tab: NTC 2018 Capitolo 3 (Azioni sulle Costruzioni D.M. 17/01/2018) */}
+          {activeTab === 'ntc' && (
+            <NtcActionsSection />
+          )}
+
+          {/* Tab 2: Vehicular Ramps (Rampe Carraie & Accessi Autorimesse D.M. 1/2/1986 & NTC 2018) */}
+          {activeTab === 'ramps' && (
+            <VehicularRampCalculator system={system} />
+          )}
+
+          {/* Tab 3: Multi-Segment Route Profile Builder */}
           {activeTab === 'route' && (
             <RouteProfileBuilder system={system} />
           )}
